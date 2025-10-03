@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos de la Semana | LINA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" style="padding-top: 50px;">
+        <a href="index.html" class="btn btn--ghost" style="margin-bottom: 20px;">
+            <i class="bi bi-arrow-left"></i> Volver a Unidades
+        </a>
+        
+        <h2 id="semana-titulo" class="title">Cargando Recursos...</h2>
+        
+        <div class="upload-area" style="margin-top: 30px; padding: 20px; border: 1px solid #333; border-radius: 8px;">
+            <h3>Subir Nuevo Recurso</h3>
+            <form id="upload-form" class="upload-form-grid">
+                
+                <div class="input-group">
+                    <input type="text" id="resource-name" placeholder="Nombre del Archivo" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="file" id="file-input" required>
+                </div>
+                
+                <button type="submit" class="btn btn--primary upload-btn-full" id="upload-btn">
+                    Subir a Semana <span id="current-week-id"></span>
+                </button>
+                
+                <p id="upload-status" class="upload-status-message"></p>
+            </form>
+        </div>
+
+        <ul id="recursos-lista" style="margin-top: 30px;">
+            </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="recursos.js"></script> 
+</body>
+</html>

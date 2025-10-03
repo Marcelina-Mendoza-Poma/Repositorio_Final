@@ -1,0 +1,212 @@
+:root{
+  --bg:#0f1020;
+  --card:#181a2e;
+  --text:#e9e9f1;
+  --muted:#a8acc9;
+  --accent:#ff6ba8;
+  --accent-2:#8a7dff;
+  --glass: rgba(255,255,255,.06);
+  --radius: 20px;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.light{
+  --bg:#faf7fd;
+  --card:#ffffffea;
+  --text:#1a1a29;
+  --muted:#51537a;
+  --glass: rgba(255,255,255,.6);
+  --shadow: 0 10px 25px rgba(27, 15, 73, .12);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  margin:0;
+  background:
+    radial-gradient(1200px 800px at 80% -10%, #ff9ac3 0, transparent 60%),
+    radial-gradient(1000px 600px at -10% 20%, #8a7dff55 0, transparent 60%),
+    var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+}
+a{color:var(--accent);text-decoration:none}
+.container{width:min(1120px, 92%); margin:0 auto}
+
+/* Navbar */
+.nav{position:sticky; top:12px; z-index:50}
+.nav__bar{
+  display:flex; align-items:center; justify-content:space-between;
+  backdrop-filter: blur(12px); background:var(--glass);
+  border:1px solid #ffffff1a; padding:10px 16px; border-radius:calc(var(--radius) + 8px);
+  box-shadow: var(--shadow);
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px}
+.brand__logo{width:34px; height:34px; border-radius:12px;
+  background:conic-gradient(from 210deg, var(--accent), var(--accent-2));
+  display:grid; place-items:center; color:white; font-size:18px;}
+.nav__links{display:flex; gap:18px; align-items:center}
+.nav__links a{padding:10px 14px; border-radius:12px; color:var(--text)}
+.nav__links a:hover{background:linear-gradient(90deg, #ffffff10, #ffffff05)}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:16px; cursor:pointer; border:none; font-weight:600}
+.btn--accent{background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:white; box-shadow: 0 10px 20px rgba(255,107,168,.35)}
+.btn--ghost{background:transparent; border:1px solid #ffffff2a; color:var(--text)}
+.menu{display:none}
+.d-none-sm{display:inline}
+@media (max-width:680px){.d-none-sm{display:none}.nav__links{display:none}.menu{display:block}}
+
+/* Hero */
+.hero{display:grid; grid-template-columns: 1.35fr .9fr; gap:28px; align-items:center; padding:90px 0 40px}
+.chip{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border-radius:999px; background:#ffffff12; border:1px solid #ffffff2a; font-size:12px; color:var(--muted)}
+.hero h1{font-size: clamp(36px, 6vw, 60px); line-height:1.05; margin:14px 0 10px}
+.grad{background:linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; color:transparent}
+.hero p{font-size: clamp(14px, 2.4vw, 18px); color:var(--muted)}
+.hero__cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+
+.hero__card{position:relative; aspect-ratio: 4/5; border-radius: 28px; overflow:hidden; box-shadow:var(--shadow);
+  background:linear-gradient(160deg, #ffffff10, #ffffff06); border:1px solid #ffffff24}
+.hero__blob{position:absolute; inset:auto auto -80px -80px; width:320px; height:320px; border-radius:50%; filter: blur(40px);
+  background: radial-gradient(circle at 30% 30%, #ff6ba8 0%, transparent 60%), radial-gradient(circle at 70% 50%, #8a7dff 0%, transparent 50%)}
+.pfp{position:absolute; inset:0; background:
+  radial-gradient(550px 280px at 80% 10%, #ffffff20 0, transparent 40%),
+  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%23ff8ec0"/><stop offset="1" stop-color="%238a7dff"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)" opacity="0.12"/></svg>') center/cover no-repeat;
+  display:grid; place-items:center}
+.pfp__circle{width:70%; aspect-ratio:1; border-radius:50%; background:linear-gradient(180deg, #fff, #f6e9ff);
+  display:grid; place-items:center; border:6px solid #ffffffaa}
+.pfp__initials{font-size: clamp(54px, 9vw, 90px); font-weight:800; background:linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; color:transparent}
+
+/* Sections */
+section{padding:72px 0}
+.title{font-size: clamp(26px, 4vw, 38px); margin:0 0 20px}
+.subtitle{color:var(--muted); margin:0 0 26px}
+.grid{display:grid; gap:18px}
+.grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.grid.cols-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width: 980px){ .hero{grid-template-columns:1fr} .hero__card{order:-1} .grid.cols-3{grid-template-columns:1fr 1fr} }
+@media (max-width: 680px){ .grid.cols-3,.grid.cols-2{grid-template-columns:1fr} }
+
+.card{background:var(--card); border:1px solid #ffffff1f; border-radius: var(--radius); padding:22px; box-shadow:var(--shadow)}
+.card--glass{background:linear-gradient(180deg, #ffffff06, #ffffff02); backdrop-filter:blur(10px)}
+.list{display:grid; gap:10px; padding-left:0; list-style:none}
+.list li{display:flex; gap:10px; align-items:flex-start}
+.muted{color:var(--muted)}
+
+/* About facts */
+.about__items{display:grid; grid-template-columns:1.3fr 1fr; gap:18px}
+@media (max-width:980px){.about__items{grid-template-columns:1fr}}
+.facts{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.fact{padding:16px; border-radius:16px; background:linear-gradient(180deg, #ffffff08, #ffffff03); border:1px dashed #ffffff2a; text-align:center}
+.fact b{font-size:24px; display:block}
+
+/* Skills */
+.skill{display:grid; gap:8px}
+.skill__bar{height:10px; background:#ffffff18; border-radius:999px; overflow:hidden}
+.skill__bar > span{display:block; height:100%; background:linear-gradient(90deg, var(--accent), var(--accent-2))}
+
+/* Projects */
+.filters{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px}
+.filter{padding:8px 12px; border-radius:999px; border:1px solid #ffffff30; background:#ffffff08; cursor:pointer; font-size:13px; color:var(--text)}
+.filter.active{background:linear-gradient(90deg, var(--accent), var(--accent-2)); color:#fff; border-color:transparent}
+.project.card{display:grid; grid-template-rows:180px auto; overflow:hidden}
+.thumb{position:relative; background:linear-gradient(135deg,#ffbed8,#c7c1ff); border-radius:14px; overflow:hidden}
+.thumb::after{content:""; position:absolute; inset:0; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><g opacity="0.08"><circle cx="80" cy="70" r="40" fill="%23fff"/><rect x="240" y="40" width="220" height="120" rx="18" fill="%23fff"/></g></svg>') center/cover no-repeat}
+.badge{position:absolute; top:12px; left:12px; padding:6px 10px; font-size:12px; border-radius:999px; background:#00000066; color:#fff}
+
+/* Timeline */
+.timeline{position:relative; padding-left:18px}
+.timeline::before{content:""; position:absolute; left:6px; top:0; bottom:0; width:2px; background:linear-gradient(var(--accent), var(--accent-2))}
+.tl-item{position:relative; padding-left:18px; margin-bottom:18px}
+.tl-item::before{content:""; position:absolute; left:-2px; top:6px; width:14px; height:14px; border-radius:50%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); box-shadow:0 0 0 4px #ffffff18}
+
+/* Contact */
+form{display:grid; gap:12px}
+input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid #ffffff30; background:#ffffff0f; color:var(--text); font-family:inherit}
+textarea{min-height:120px; resize:vertical}
+
+/* Footer */
+footer{padding:26px 0 40px; color:var(--muted)}
+.foot{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.social a{padding:8px; border-radius:12px; background:#ffffff10; border:1px solid #ffffff22}
+.social a:hover{background:#ffffff18}
+
+/* Reveal on scroll */
+.reveal{opacity:0; transform: translateY(12px); transition:.6s ease}
+.reveal.show{opacity:1; transform:none}
+
+/* -------------------------------------------------------- */
+/* --- ESTILOS AGREGADOS PARA LA SECCIÓN DE RECURSOS (recursos.html) --- */
+/* -------------------------------------------------------- */
+
+/* Hace que el formulario use una rejilla para colocar los elementos */
+.upload-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto; 
+    gap: 15px; 
+    align-items: center; 
+}
+
+/* Ajusta los grupos de inputs para que ocupen todo el ancho de su columna */
+.upload-form-grid .input-group {
+    width: 100%;
+}
+
+/* Ajusta todos los inputs de texto y archivo para que llenen su contenedor */
+.upload-form-grid input[type="text"],
+.upload-form-grid input[type="file"] {
+    width: 100%;
+    padding: 10px; 
+    border-radius: 12px; 
+    border: 1px solid #ffffff30; 
+    box-sizing: border-box; 
+    background-color: var(--card); 
+    color: var(--text);
+}
+
+/* Estilo para el botón de subida */
+.upload-btn-full {
+    padding: 10px 18px; 
+    height: 100%; 
+}
+
+/* Estilo para el mensaje de estado (éxito/error) */
+.upload-status-message {
+    grid-column: 1 / span 3; 
+    text-align: center;
+    font-weight: bold;
+    margin-top: 0;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* --- Estilos para la lista de recursos --- */
+#recursos-lista li {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 0;
+    border-bottom: 1px dashed #ffffff22; 
+    list-style: none; 
+}
+#recursos-lista li:last-child {
+    border-bottom: none; 
+}
+.btn-delete-resource {
+    background-color: var(--accent);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Media Query para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .upload-form-grid {
+        grid-template-columns: 1fr; 
+    }
+    .upload-status-message {
+        grid-column: 1; 
+    }
+    .upload-btn-full {
+        width: 100%;
+        height: auto;
+    }
+}
